@@ -1,12 +1,24 @@
-document.addEventListener("keydown",function(){
-    alert(this.innerHTML);
+document.addEventListener("keydown",function(e){
+    change(e.key);
 }); 
 
 for (var i = 0;i<document.querySelectorAll("button").length;i++)
 {
     document.querySelectorAll("button")[i].addEventListener("click",function(){
+        var buttonInner = this.innerHTML;
+        var pathSound = "";
+        
+        var audio = new Audio(change(buttonInner));
+        audio.play();
+        //this.style.color = "white";
 
-        switch (this.innerHTML) 
+    });
+   
+}
+
+function change(key){
+    console.log(key);
+    switch (key) 
         {
             case "w":
                 var pathSound = ("sounds/crash.mp3");
@@ -39,23 +51,9 @@ for (var i = 0;i<document.querySelectorAll("button").length;i++)
             default:
                 break;
         }
-        var audio = new Audio(pathSound);
-        audio.play();
-        //this.style.color = "white";
-
-    });
-   
+    return pathSound
 }
 
 
 
 
-/* for (var i = 0;i<document.querySelectorAll(".drum").length;i++){
-    alert(i);
-    document.querySelectorAll("button")[i].addEventListener("click",handclick);  
-}
-
-function handclick(){
-    var audio = new Audio("sounds/tom-1.mp3");
-    audio.play(); 
-} */
