@@ -5,11 +5,7 @@ var pathSound = "";
 document.addEventListener("keydown",function(e){
     var buttonInner = e.key;
     change(buttonInner);
-    /* while (buttonInner)
-    {
     buttonAnimation(buttonInner);
-    } */
-    
 }); 
 
 //ENTRADA VIA MOUSE
@@ -65,7 +61,11 @@ function change(key){
 
 function buttonAnimation(key){
     var activebutton = document.querySelector("."+key)
+    var clsName = activebutton.className;
     activebutton.className = (activebutton.className + " pressed");
+    setTimeout(() => {
+        activebutton.className = clsName;
+    }, 50);
     console.log(activebutton);
 }
 
