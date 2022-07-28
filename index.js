@@ -1,21 +1,28 @@
+var pathSound = "";
+
+//ENTRADA VIA TECLADO
+// *acrescentar possibilidade de maiusculas*
 document.addEventListener("keydown",function(e){
-    change(e.key);
+    var buttonInner = e.key;
+    change(buttonInner);
+    /* while (buttonInner)
+    {
+    buttonAnimation(buttonInner);
+    } */
+    
 }); 
 
+//ENTRADA VIA MOUSE
 for (var i = 0;i<document.querySelectorAll("button").length;i++)
 {
-    document.querySelectorAll("button")[i].addEventListener("click",function(){
-        var buttonInner = this.innerHTML;
-        var pathSound = "";
-        
-        var audio = new Audio(change(buttonInner));
-        audio.play();
-        //this.style.color = "white";
-
-    });
-   
+    document.querySelectorAll("button")[i].addEventListener("click",function(){       
+    var buttonInner = this.innerHTML;
+    change(buttonInner);
+    buttonAnimation(buttonInner);
+    });   
 }
 
+//SAÍDA DO SOM
 function change(key){
     console.log(key);
     switch (key) 
@@ -51,9 +58,16 @@ function change(key){
             default:
                 break;
         }
-    return pathSound
+        var audio = new Audio(pathSound);
+        audio.play();
+        
 }
 
+function buttonAnimation(key){
+    var activebutton = document.querySelector("."+key)
+    activebutton.className = (activebutton.className + " pressed");
+    console.log(activebutton);
+}
 
 
 
